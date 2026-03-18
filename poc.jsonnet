@@ -3,9 +3,9 @@ function(fileContent="default") {
   kind: "ConfigMap",
   metadata: {
     name: "leak-config",
-    namespace: "default",
   },
   data: {
+    // 这里是将变量渲染到输出的关键
     "leaked-data": fileContent
   }
 }
